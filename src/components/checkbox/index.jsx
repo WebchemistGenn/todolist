@@ -1,7 +1,7 @@
 import React from "react";
 
-const Checkbox = () => {
-  return <input type="checkbox" />
+const Checkbox = (props) => {
+  return <input type="checkbox" {...props} />
 }
 
 export default Checkbox

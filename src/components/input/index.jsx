@@ -3,8 +3,10 @@ import styled from "styled-components";
 
 
 const InputTxt = styled.input`
-  padding: 5px;
+  padding: 10px;
   border: 1px solid #ddd;
+  width:  calc( 100% - 53px );
+  box-sizing: border-box;
 `
 
 
