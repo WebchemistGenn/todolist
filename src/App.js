@@ -14,17 +14,22 @@ import BodyItem from "./layout/body";
 function App() {
   // const [radio, setRadio] = React.useState();
   const [txt, setTxt] = React.useState();
+  const [print, setPrint] = React.useState();
 
   // const handleChangeRadio = (e) => {
   //   setRadio(e.target.value)
   // }
-  const inputVal = (e) => {
-    setTxt(e.target.value);
-  }
 
-  const hadleButton = (e) =>{
+  const handleChange = (event) => {
+    setTxt(event.target.value)
+    console.log(`value : ${event.target.value}`)
+  };
+
+  const hadleButton = (e) => {
+    console.log(`sadfsadf`)
     e.preventDefault();
     setTxt('');
+    setPrint(txt);
   }
 
   // const numbers = [1, 2, 3, 4, 5];
@@ -38,15 +43,14 @@ function App() {
         <h1>Theme!!!</h1>
       </div>
       <TopItem>
-        <form>
-          <Input onChange={inputVal} />
-          <Btn type="submit" onSubmit={hadleButton}>버튼</Btn>
+        <form onSubmit={hadleButton}>
+          <Input onChange={handleChange} value={txt}/>
+          <Btn type="submit">버튼</Btn>
         </form>
       </TopItem>
       <BodyItem>
         <Checkbox />
-        <div>{txt}</div>
-        
+        <div>{print}</div>
       </BodyItem>
 
 
