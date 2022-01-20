@@ -4,11 +4,15 @@ import styled from "styled-components";
 
 
 const TopItem = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    border-bottom: 1px solid #ddd;
+    
+    form {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+      border-bottom: 1px solid #ddd;
+    }
  
 `
 
