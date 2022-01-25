@@ -1,6 +1,6 @@
 import React from "react"
 import Btn from "./components/button";
-import Checkbox from "./components/checkbox";
+import Check from "./components/checkbox";
 import Input from "./components/input";
 // import Radio from "./components/radio";
 // import Select from "./components/select";
@@ -10,33 +10,74 @@ import "./assets/css/reset.css"
 import Wrap from "./layout/wrap";
 import TopItem from "./layout/top";
 import BodyItem from "./layout/body";
+import styled from "styled-components";
+
+const UL = styled.ul`
+  width: 100%;
+  li {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between;
+    margin-bottom: 10px;
+    p {
+      display: flex;
+      align-items: center; 
+      font-size: 16px;
+      color: #333;
+    }
+    input[type='checkbox'] {
+      margin-right: 10px;
+    }
+  }
+`
+
 
 function App() {
   // const [radio, setRadio] = React.useState();
-  const [txt, setTxt] = React.useState();
-  const [print, setPrint] = React.useState();
-
   // const handleChangeRadio = (e) => {
   //   setRadio(e.target.value)
   // }
+    
+    
+ 
 
-  const handleChange = (event) => {
-    setTxt(event.target.value)
-    console.log(`value : ${event.target.value}`)
-  };
-
+  const [text, setText] = React.useState('');
+  const [list, setList] = React.useState([]);
+ 
+  const change = (e) => setText(e.target.value);
   const hadleButton = (e) => {
-    console.log(`sadfsadf`)
     e.preventDefault();
-    setTxt('');
-    setPrint(txt);
+    if (text === ''){
+      return;
+    }
+    setText('');
+    setList( (arr) => [text, ...arr] )
+
   }
 
-  // const numbers = [1, 2, 3, 4, 5];
-  // const result = numbers.map((num) => num *2);
-  // console.log(result);
+
+  // const [bChecked, setChecked] = useState(false);
+
+  // const checkHandler = ({ target }) => {
+  //   setChecked(!bChecked);
+  //   checkedItemHandler(issue.id, target.checked);
+  // };
+  
+  // 컴포넌트 쌓여진 부분 생략
 
 
+  const [check, setCheck] = React.useState(false);
+  const checkChange = ({ e }) => {
+    setCheck(!check);
+
+    if(check) {
+      console.log(1);
+    }else {
+      console.log(2);
+    }
+    
+  }
+  
   return (
     <Wrap>
       <div className="top">
@@ -44,15 +85,30 @@ function App() {
       </div>
       <TopItem>
         <form onSubmit={hadleButton}>
-          <Input onChange={handleChange} value={txt}/>
+          <Input 
+            onChange={change} 
+            value={text} 
+            type="text"
+          />
           <Btn type="submit">버튼</Btn>
         </form>
       </TopItem>
       <BodyItem>
-        <Checkbox />
-        <div>{print}</div>
+        <UL>
+          {list.map((item, index) => (
+            <li key={index}>
+              <p>
+                <Check checked={check} onChange={(e) => checkChange(e)} />
+                {item}
+              </p>
+              <Btn>삭제</Btn>
+            </li>
+          ))}
+        </UL>
+        {/* <Checkbox />
+        <div>{ list }</div> */}
       </BodyItem>
-
+      
 
       {/* <h3>Radio</h3> */}
       {/* <Radio value="0" checked={radio === "0"} onChange={handleChangeRadio} />
@@ -63,8 +119,6 @@ function App() {
 
       <h3>Slider</h3>
       <Slider /> */}
-
-     
     </Wrap>
   );
 }
