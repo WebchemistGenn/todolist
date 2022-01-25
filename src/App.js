@@ -37,9 +37,7 @@ function App() {
   // const handleChangeRadio = (e) => {
   //   setRadio(e.target.value)
   // }
-    
-    
- 
+      
 
   const [text, setText] = React.useState('');
   const [list, setList] = React.useState([]);
@@ -52,24 +50,11 @@ function App() {
     }
     setText('');
     setList( (arr) => [text, ...arr] )
-
   }
-
-
-  // const [bChecked, setChecked] = useState(false);
-
-  // const checkHandler = ({ target }) => {
-  //   setChecked(!bChecked);
-  //   checkedItemHandler(issue.id, target.checked);
-  // };
-  
-  // 컴포넌트 쌓여진 부분 생략
-
 
   const [check, setCheck] = React.useState(false);
   const checkChange = ({ e }) => {
     setCheck(!check);
-
     if(check) {
       console.log(1);
     }else {

@@ -8,7 +8,7 @@ const BodyItem = styled.div`
     justify-content: flex-start;
     align-items: center;
     padding: 20px;
-    border-bottom: 1px solid #ddd;
+    /* border-bottom: 1px solid #ddd; */
 `
 
 
